@@ -1,0 +1,1 @@
+/home/damiano/.config/awesome/theme.lua

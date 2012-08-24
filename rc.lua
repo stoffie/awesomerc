@@ -1,0 +1,1 @@
+/home/damiano/.config/awesome/rc.lua
