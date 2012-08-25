@@ -38,6 +38,7 @@ beautiful.init(os.getenv("XDG_CONFIG_HOME").."/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "terminal"
+editor = "gvim"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -179,8 +180,8 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,			  }, "w", function () mymainmenu:show({keygrabber=true}) end),
 
 	-- Layout manipulation
-	awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(	1)	  end),
-	awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)	  end),
+	awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(	1) end),
+	awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1) end),
 	awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
 	awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
 	awful.key({ modkey,			  }, "u", awful.client.urgent.jumpto),
@@ -194,32 +195,33 @@ globalkeys = awful.util.table.join(
 
 	-- Standard program
 	awful.key({ modkey,			  }, "Return", function () awful.util.spawn(terminal) end),
-	awful.key({ modkey, "Control" }, "r", awesome.restart),
-	awful.key({ modkey, "Shift"   }, "q", awesome.quit),
+	awful.key({ modkey,			  }, "e",	   function () awful.util.spawn(editor) end),
+	awful.key({ modkey, "Control" }, "r",	   awesome.restart),
+	awful.key({ modkey, "Shift"   }, "q", 	   awesome.quit),
 
-	awful.key({ modkey,			  }, "l",	  function () awful.tag.incmwfact( 0.05)	end),
-	awful.key({ modkey,			  }, "h",	  function () awful.tag.incmwfact(-0.05)	end),
-	awful.key({ modkey, "Shift"   }, "h",	  function () awful.tag.incnmaster( 1)		end),
-	awful.key({ modkey, "Shift"   }, "l",	  function () awful.tag.incnmaster(-1)		end),
-	awful.key({ modkey, "Control" }, "h",	  function () awful.tag.incncol( 1)			end),
-	awful.key({ modkey, "Control" }, "l",	  function () awful.tag.incncol(-1)			end),
-	awful.key({ modkey,			  }, "space", function () awful.layout.inc(layouts,  1) end),
-	awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
+	awful.key({ modkey,			  }, "l",	   function () awful.tag.incmwfact( 0.05) end),
+	awful.key({ modkey,			  }, "h",	   function () awful.tag.incmwfact(-0.05) end),
+	awful.key({ modkey, "Shift"   }, "h",	   function () awful.tag.incnmaster( 1) end),
+	awful.key({ modkey, "Shift"   }, "l",	   function () awful.tag.incnmaster(-1) end),
+	awful.key({ modkey, "Control" }, "h",	   function () awful.tag.incncol( 1) end),
+	awful.key({ modkey, "Control" }, "l",	   function () awful.tag.incncol(-1) end),
+	awful.key({ modkey,			  }, "space",  function () awful.layout.inc(layouts,  1) end),
+	awful.key({ modkey, "Shift"   }, "space",  function () awful.layout.inc(layouts, -1) end),
 
-	awful.key({ modkey, "Control" }, "n", awful.client.restore),
+	awful.key({ modkey, "Control" }, "n",	   awful.client.restore),
 
 	-- Prompt
-	awful.key({ modkey },			 "r",	  function () mypromptbox[mouse.screen]:run() end)
+	awful.key({ modkey },			 "r",	   function () mypromptbox[mouse.screen]:run() end)
 )
 
 clientkeys = awful.util.table.join(
-	awful.key({ modkey,			  }, "f",	   function (c) c.fullscreen = not c.fullscreen  end),
-	awful.key({ modkey, "Shift"   }, "c",	   function (c) c:kill()						 end),
-	awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle						),
+	awful.key({ modkey,			  }, "f",	   function (c) c.fullscreen = not c.fullscreen end),
+	awful.key({ modkey, "Shift"   }, "c",	   function (c) c:kill() end),
+	awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle),
 	awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-	awful.key({ modkey,			  }, "o",	   awful.client.movetoscreen						),
-	awful.key({ modkey, "Shift"   }, "r",	   function (c) c:redraw()						 end),
-	awful.key({ modkey,			  }, "t",	   function (c) c.ontop = not c.ontop			 end),
+	awful.key({ modkey,			  }, "o",	   awful.client.movetoscreen),
+	awful.key({ modkey, "Shift"   }, "r",	   function (c) c:redraw() end),
+	awful.key({ modkey,			  }, "t",	   function (c) c.ontop = not c.ontop end),
 	awful.key({ modkey,			  }, "n",
 		function (c)
 			-- The client currently has the input focus, so it cannot be
