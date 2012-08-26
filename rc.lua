@@ -50,6 +50,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
 {
+	awful.layout.suit.max,
 	--awful.layout.suit.floating,
 	awful.layout.suit.tile,
 	awful.layout.suit.tile.left,
@@ -59,7 +60,6 @@ layouts =
 	--awful.layout.suit.fair.horizontal,
 	--awful.layout.suit.spiral,
 	--awful.layout.suit.spiral.dwindle,
-	awful.layout.suit.max,
 	--awful.layout.suit.max.fullscreen,
 	--awful.layout.suit.magnifier
 }
@@ -163,8 +163,8 @@ end
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-	awful.key({ modkey,			  }, "Left",   awful.tag.viewprev		),
-	awful.key({ modkey,			  }, "Right",  awful.tag.viewnext		),
+	awful.key({ modkey,			  }, "Left",   awful.tag.viewprev),
+	awful.key({ modkey,			  }, "Right",  awful.tag.viewnext),
 	awful.key({ modkey,			  }, "Escape", awful.tag.history.restore),
 
 	awful.key({ modkey,			  }, "j",
@@ -197,7 +197,7 @@ globalkeys = awful.util.table.join(
 	awful.key({ modkey,			  }, "Return", function () awful.util.spawn(terminal) end),
 	awful.key({ modkey,			  }, "e",	   function () awful.util.spawn(editor) end),
 	awful.key({ modkey, "Control" }, "r",	   awesome.restart),
-	awful.key({ modkey, "Shift"   }, "q", 	   awesome.quit),
+	awful.key({ modkey, "Shift"   }, "q",	   awesome.quit),
 
 	awful.key({ modkey,			  }, "l",	   function () awful.tag.incmwfact( 0.05) end),
 	awful.key({ modkey,			  }, "h",	   function () awful.tag.incmwfact(-0.05) end),
@@ -292,7 +292,7 @@ awful.rules.rules = {
 					 focus = true,
 					 keys = clientkeys,
 					 buttons = clientbuttons,
-			 size_hints_honor = false } },
+					 size_hints_honor = false } },
 }
 -- }}}
 
