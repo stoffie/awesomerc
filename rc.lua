@@ -53,9 +53,9 @@ layouts =
 	awful.layout.suit.max,
 	--awful.layout.suit.floating,
 	awful.layout.suit.tile,
-	awful.layout.suit.tile.left,
+	--awful.layout.suit.tile.left,
 	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
+	--awful.layout.suit.tile.top,
 	--awful.layout.suit.fair,
 	--awful.layout.suit.fair.horizontal,
 	--awful.layout.suit.spiral,
@@ -301,10 +301,10 @@ awful.rules.rules = {
 client.add_signal("manage", function (c, startup)
 	-- Add a titlebar
 	-- awful.titlebar.add(c, { modkey = modkey })
-	if awful.client.floating.get(c) then 
+	if awful.client.floating.get(c) then
 		awful.titlebar.add(c, { modkey = modkey })
 	end
-	
+
 	-- Set the titlebar according to the floating property
 	c:add_signal("property::floating", function()
 		if awful.client.floating.get(c) then
